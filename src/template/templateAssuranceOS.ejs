@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termo de Garantia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      width: 21cm;
+      height: 28.7cm;
+      margin: 0 auto;
+      padding: 0.5cm 2cm 2cm 2cm;
+      box-sizing: border-box;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .address {
+      font-size: 10px;
+      margin-bottom: 2px;
+    }
+
+    .info-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .info-block {
+      width: 48%;
+    }
+
+    .info-row {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .info-label {
+      font-weight: bold;
+      width: 150px;
+    }
+
+    .info-content {
+      flex: 1;
+    }
+
+    .divider {
+      border-top: 1px solid #000;
+      margin: 20px 0;
+    }
+
+    .warranty-terms {
+      margin: 20px 0;
+    }
+
+    .warranty-terms p {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .signatures {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 70px;
+    }
+
+    .signature {
+      width: 45%;
+      text-align: center;
+    }
+
+    .signature-line {
+      width: 100%;
+      border-top: 1px solid #000;
+      margin-bottom: 5px;
+    }
+
+    .description-box {
+      border: 1px solid #000;
+      padding: 10px;
+      min-height: 60px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="title">TECHOS - ASSISTÊNCIA TÉCNICA</div>
+    <div class="address">RUA TIRADENTES 53, A, CENTRO MOSSORÓ/RN</div>
+    <div class="address">CNPJ: 00.000.000/0000-00</div>
+    <div class="address">TELEFONE 9999-9999</div>
+    <div class="address">Whatsapp: (99) 99909-9999</div>
+    <div class="subtitle">CERTIFICADO DE GARANTIA</div>
+  </div>
+
+  <div class="info-container">
+    <div class="info-block">
+      <div class="info-row">
+        <div class="info-label">Nº OS:</div>
+        <div class="info-content"><%= orderService.id %></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Data de Emissão:</div>
+        <div class="info-content">
+          <%= (orderService.departureDate instanceof Date ? orderService.departureDate : new Date(orderService.departureDate)).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }); %>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Validade da Garantia:</div>
+        <div class="info-content">
+          <%= new Date(new Date(orderService.departureDate).setDate(new Date(orderService.departureDate).getDate() + 90)).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }) %>
+        </div>
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="info-row">
+        <div class="info-label">Status:</div>
+        <div class="info-content"><%= orderService.status %></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Técnico Responsável:</div>
+        <div class="info-content"><%= orderService.budgetId.technical.name %></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Valor do Serviço:</div>
+        <div class="info-content">R$ <%= orderService.budgetId.value.toFixed(2).replace('.', ',') %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="info-container">
+    <div class="info-block">
+      <div class="info-row">
+        <div class="info-label">Cliente:</div>
+        <div class="info-content"><%= orderService.clientId.name %></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Contato:</div>
+        <div class="info-content">
+          <%= orderService.clientId.contato.celular || orderService.clientId.contato.telefone || "" %>
+        </div>
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="info-row">
+        <div class="info-label">Equipamento:</div>
+        <div class="info-content"><%= orderService.smartphoneId.marca %></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Modelo:</div>
+        <div class="info-content"><%= orderService.smartphoneId.modelo || "" %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-row">
+    <div class="info-label">Serviço Realizado:</div>
+  </div>
+  <div class="description-box">
+    <%= orderService.budgetId.description %>
+  </div>
+
+  <div class="info-row" style="margin-top: 15px;">
+    <div class="info-label">Observações:</div>
+  </div>
+  <div class="description-box">
+    <%= orderService.budgetId.observation %>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="warranty-terms">
+    <div class="subtitle">TERMOS E CONDIÇÕES DE GARANTIA</div>
+
+    <p><strong>1. Período de Garantia:</strong> A TECHOS Assistência Técnica garante os serviços prestados e as peças substituídas por um período de 90 (noventa) dias, contados a partir da data de entrega do equipamento ao cliente.</p>
+
+    <p><strong>2. Cobertura:</strong> Esta garantia cobre exclusivamente defeitos relacionados ao serviço prestado e às peças substituídas conforme descrito neste documento. Qualquer problema não relacionado ao serviço executado não está coberto por esta garantia.</p>
+
+    <p><strong>3. Exclusões da Garantia:</strong> A garantia não se aplica nos seguintes casos:</p>
+    <div style="display: flex; justify-content: space-between;">
+      <ul style="width: 48%; list-style-type: disc;">
+        <li>Danos causados por quedas, impactos ou acidentes;</li>
+        <li>Exposição à água, umidade excessiva ou líquidos;</li>
+        <li>Uso inadequado ou fora das especificações;</li>
+        <li>Modificações ou reparos por terceiros;</li>
+      </ul>
+      <ul style="width: 48%; list-style-type: disc;">
+        <li>Problemas com software ou aplicativos incompatíveis;</li>
+        <li>Defeitos diferentes dos originalmente consertados;</li>
+        <li>Desgaste natural de componentes não substituídos;</li>
+        <li>Violação do lacre de garantia, quando houver.</li>
+      </ul>
+    </div>
+
+    <p><strong>4. Acionamento da Garantia:</strong> Para acionar a garantia, o cliente deve trazer o aparelho à loja juntamente com este certificado e a ordem de serviço original. A avaliação do problema será realizada por nossos técnicos para verificar se está coberto pela garantia.</p>
+
+    <p><strong>5. Ressalvas:</strong> A TECHOS não se responsabiliza por perda de dados ou arquivos armazenados no dispositivo. Recomendamos que o cliente sempre mantenha um backup de suas informações importantes.</p>
+  </div>
+
+  <div class="signatures">
+    <div class="signature">
+      <div class="signature-line"></div>
+      <div>Técnico Responsável</div>
+      <div><%= orderService.budgetId.technical.name %></div>
+    </div>
+    <div class="signature">
+      <div class="signature-line"></div>
+      <div>Assinatura do Cliente</div>
+      <div><%= orderService.clientId.name %></div>
+    </div>
+  </div>
+</body>
+
+</html>

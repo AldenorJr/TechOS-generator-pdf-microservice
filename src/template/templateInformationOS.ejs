@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ordem de Serviço</title>
+  <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      width: 7.4cm;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 13px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 13px;
+      font-weight: bold;
+      margin-right: 4px;
+    }
+
+    p {
+      font-size: 13px;
+    }
+
+    label {
+      font-size: 11px;
+    }
+
+    .center {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .info-1 {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .info2 {
+      margin-top: 15px;
+    }
+
+    .descriptions {
+      min-width: 6.8em;
+      min-height: 70px;
+      text-align: start;
+      margin-left: 2px;
+      margin-right: 2px;
+      word-break: break-all;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .p-info2 {
+      margin-left: 1.5px;
+    }
+
+    .data,
+    .os {
+      display: flex;
+      align-items: center;
+      text-align: start;
+      margin-right: 5px;
+    }
+
+    .equipment {
+      text-align: start;
+    }
+
+    .model,
+    .os {
+      text-align: start;
+    }
+
+    #assinatura {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="center">
+    <h1 class="">
+      TECHOS - ASSISTÊNCIA TÉCNICA
+    </h1>
+    <label>RUA TIRADENTES 53, A, CENTRO MOSSORÓ/RN</label>
+    <label>TELEFONE 9999-9999</label>
+    <p></p>
+  </div>
+  <div class="info-1">
+    <div class="data">
+      <h2>
+        DATA:
+      </h2>
+      <p>
+        <%= (orderService.createdAt instanceof Date ? orderService.createdAt : new Date(orderService.createdAt)).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }); %>
+      </p>
+    </div>
+    <div class="os">
+      <h2>
+        Nº OS:
+      </h2>
+      <p>
+        <%= orderService.id %>
+      </p>
+    </div>
+  </div>
+  <div class="info-1">
+    <div class="equipment">
+      <h2>
+        EQUIPAMENTO:
+      </h2>
+      <p class="p-info2">
+        <%= orderService.smartphoneId.marca %>
+      </p>
+    </div>
+    <div class="model">
+      <h2>
+        MODELO:
+      </h2>
+      <p class="p-info2">
+        <%= orderService.smartphoneId.modelo || "" %>
+      </p>
+    </div>
+  </div>
+  <div class="info2">
+    <h2>
+      Nome:
+    </h2>
+    <p class="p-info2">
+      <%= orderService.clientId.name %>
+    </p>
+  </div>
+  <div class="info2">
+    <h2>
+      Telefone:
+    </h2>
+    <p class="p-info2">
+      <%= orderService.clientId.contato.celular || orderService.clientId.contato.telefone || "" %>
+    </p>
+  </div>
+  <div class="info2">
+    <h2>
+      Ocorrencias descritas pelo cliente:
+    </h2>
+    <p class="descriptions">
+      <%= orderService.budgetId.description %>
+    </p>
+  </div>
+  <div class="info2">
+    <h2>
+      Observações:
+    </h2>
+    <p class="descriptions">
+      <%= orderService.budgetId.observation %>
+    </p>
+  </div>
+  <div>
+    <p class="center" id="assinatura">
+      <label>_____________________________________</label>
+      <label><%= orderService.clientId.name %></label>
+    </p>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "techos-generator-pdf-microservie",
+  "version": "1.0.0",
+  "main": "src/Server.ts",
+  "scripts": {
+    "dev": "ts-node-dev src/Server.ts",
+    "start": "ts-node src/Server.ts",
+    "build": "npx tsc --build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.1",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "puppeteer": "^24.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/ejs": "^3.1.5",
+    "@types/puppeteer": "^5.4.7"
+  }
+}
