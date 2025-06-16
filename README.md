@@ -28,7 +28,9 @@ Microserviço responsável pela geração de PDFs de documentos, como **Assuranc
 - http://localhost:8081/v1/pdf/assurance
 - http://localhost:8081/v1/pdf/information
 
---
+---
+
+## 🛠️ Exemplo de PDFs
 
 [ordem-servico-12345.pdf](https://github.com/user-attachments/files/20749313/ordem-servico-12345.pdf)
 
