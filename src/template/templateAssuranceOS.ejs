@@ -159,18 +159,18 @@
       <div class="info-row">
         <div class="info-label">Contato:</div>
         <div class="info-content">
-          <%= orderService.clientId.contato.celular || orderService.clientId.contato.telefone || "" %>
+          <%= orderService.clientId.contact.phone || orderService.clientId.contact.email || "" %>
         </div>
       </div>
     </div>
     <div class="info-block">
       <div class="info-row">
         <div class="info-label">Equipamento:</div>
-        <div class="info-content"><%= orderService.smartphoneId.marca %></div>
+        <div class="info-content">Telefone</div>
       </div>
       <div class="info-row">
         <div class="info-label">Modelo:</div>
-        <div class="info-content"><%= orderService.smartphoneId.modelo || "" %></div>
+        <div class="info-content"><%= orderService.smartphoneId.model || "" %></div>
       </div>
     </div>
   </div>

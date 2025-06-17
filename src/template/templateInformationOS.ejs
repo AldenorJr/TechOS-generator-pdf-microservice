@@ -128,7 +128,7 @@
         EQUIPAMENTO:
       </h2>
       <p class="p-info2">
-        <%= orderService.smartphoneId.marca %>
+        Telefone
       </p>
     </div>
     <div class="model">
@@ -136,7 +136,7 @@
         MODELO:
       </h2>
       <p class="p-info2">
-        <%= orderService.smartphoneId.modelo || "" %>
+        <%= orderService.smartphoneId.model || "" %>
       </p>
     </div>
   </div>
@@ -153,7 +153,7 @@
       Telefone:
     </h2>
     <p class="p-info2">
-      <%= orderService.clientId.contato.celular || orderService.clientId.contato.telefone || "" %>
+      <%= orderService.clientId.contact.phone || orderService.clientId.contact.email || "" %>
     </p>
   </div>
   <div class="info2">
@@ -161,7 +161,7 @@
       Ocorrencias descritas pelo cliente:
     </h2>
     <p class="descriptions">
-      <%= orderService.budgetId.description %>
+      <%= orderService.smartphoneId.problem %>
     </p>
   </div>
   <div class="info2">
@@ -169,7 +169,7 @@
       Observações:
     </h2>
     <p class="descriptions">
-      <%= orderService.budgetId.observation %>
+      <%= orderService.smartphoneId.observation %>
     </p>
   </div>
   <div>

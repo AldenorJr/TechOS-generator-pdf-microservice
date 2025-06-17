@@ -5,6 +5,6 @@ export interface Smartphone {
     problem: string;
     observation: string;
     serial: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 }

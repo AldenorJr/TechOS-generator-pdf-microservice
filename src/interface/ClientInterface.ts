@@ -4,7 +4,7 @@ export interface Client {
     id: string;
     name: string;
     cpf: string;
-    contato: Contato;
+    contact: Contato;
     updatedAt: Date;
     createdAt: Date;
 }
